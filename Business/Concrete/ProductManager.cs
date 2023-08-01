@@ -33,13 +33,12 @@ namespace Business.Concrete
 
         //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
-        [CacheRemoveAspect("IProductService.Get")]
+        //[CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
             var result = BusinessRules.Run(
                 CheckIfProductCountOfCategoryCorrect(product.CategoryId), 
-                CheckIfProductNameExist(product.ProductName),
-                CheckIfCategoryLimitExceeded()
+                CheckIfProductNameExist(product.ProductName)
                 );
 
 
